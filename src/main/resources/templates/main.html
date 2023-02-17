@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>EarthQuakes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<p>Upload Data into Database</p>
+<div class="d-flex justify-content-center">
+    <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="file" />
+        <input type="submit" value="Upload" />
+    </form>
+</div>
+
+<br/>
+<hr/>
+<br/>
+
+
+<div class="d-flex justify-content-center">
+    <p>Enter the magnitude and Search for it:</p>
+    <form class="form-group" th:action="@{/searchByMagnitude}" th:object="${input}" method="get">
+        <label>Enter your Query:</label>
+        <input type="number" th:field="*{mag}" placeholder="5.0" step="0.01"/>
+        <input type="submit" value="searchByMagnitude"/>
+    </form>
+</div>
+
+<br/>
+<hr/>
+<br/>
+
+<div class="d-flex justify-content-center">
+    <p>Enter the Dates and magnitude you want to search:</p>
+    <form class="form-group" th:action="@{/searchBetweenDatesAndMagnitude}" th:object="${input}" method="get">
+        <label>Date1</label>
+        <input type="date" th:field="*{date1}" />
+        <label>Date2</label>
+        <input type="date" th:field="*{date2}" />
+        <label>Date1</label>
+        <input type="number" th:field="*{mag}" placeholder="5.0" step="0.01"/>
+        <input type="submit" value="searchBetweenDatesAndMagnitude"/>
+    </form>
+</div>
+
+<br/>
+<hr/>
+<br/>
+
+<div class="d-flex justify-content-center">
+    <p>Enter Location Details and Distance:</p>
+    <p>Example : San Francisco, California: Latitude 37.7749, Longitude -122.4194</p>
+    <form class="form-group" th:action="@{/searchWithInDistance}" th:object="${input}" method="get">
+        <label>Latitude</label>
+        <input type="number" th:field="*{latitude}" value="37.7749" placeholder="37.7749" step="0.00000001"/>
+        <label>Longitude</label>
+        <input type="number" th:field="*{longitude}" value="-122.4194" placeholder="-122.4194" step="0.00000001"/>
+        <label>maxDistance</label>
+        <input type="number" th:field="*{maxDistance}" value="20" placeholder="20"/> KM
+        <input type="submit" value="searchWithInDistance"/>
+    </form>
+</div>
+
+<br/>
+<hr/>
+<br/>
+
+<div class="d-flex justify-content-center">
+    <p>Enter magnitude and see graph which shows at what hour how many earthquakes occurred:</p>
+    <form class="form-group" th:action="@{/timeOfEarthQuake}" th:object="${input}" method="get">
+        <label>Magnitude</label>
+        <input type="number" th:field="*{mag}" placeholder="4.0" step="0.01"/>
+        <input type="submit" value="EarthQuakesGraph"/>
+    </form>
+</div>
+
+<br/>
+<hr/>
+<br/>
+
+<div class="d-flex justify-content-center">
+    <p>Click below button to delete all the EarthQuakes record in DB:</p>
+    <form class="form-group" th:action="@{/deleteAll}" method="get">
+        <input type="submit" value="Delete All Record from DB"/>
+    </form>
+</div>
+
+
+
+</body>
+</html>

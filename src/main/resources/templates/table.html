@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+<body>
+
+<h1 th:text="${message}"></h1>
+
+<div class="d-flex justify-content-center">
+
+  <p th:text="${message}"></p>
+  <hr/>
+  <br/>
+
+  <table class="table table-hover">
+  <!--  <tr>
+      <th></th>
+      <th>Name</th>
+      <th>State</th>
+      <th>Salary</th>
+      <th>Grade</th>
+      <th>Room</th>
+      <th>Telum</th>
+      <th>Picture</th>
+      <th>Keywords</th>
+      <th>Actions</th>
+    </tr>-->
+    <tr th:each="item : ${list}">
+
+      <td th:text="${item.time}"></td>
+      <td th:text="${item.latitude}"></td>
+      <td th:text="${item.longitude}"></td>
+      <td th:text="${item.depth}"></td>
+      <td th:text="${item.mag}"></td>
+      <td th:text="${item.magType}"></td>
+      <td th:text="${item.nst}"></td>
+      <td th:text="${item.gap}"></td>
+      <td th:text="${item.dmin}"></td>
+      <td th:text="${item.rms}"></td>
+      <td th:text="${item.net}"></td>
+      <td th:text="${item.id}"></td>
+      <td th:text="${item.updated}"></td>
+      <td th:text="${item.place}"></td>
+      <td th:text="${item.type}"></td>
+      <td th:text="${item.horizontalError}"></td>
+      <td th:text="${item.depthError}"></td>
+      <td th:text="${item.magError}"></td>
+      <td th:text="${item.magNst}"></td>
+      <td th:text="${item.status}"></td>
+      <td th:text="${item.locationSource}"></td>
+      <td th:text="${item.magSource}"></td>
+
+    </tr>
+  </table>
+</div>
+
+</body>
+</html>
